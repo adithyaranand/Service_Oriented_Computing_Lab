@@ -43,7 +43,6 @@ public class ParseXML {
             writer.println("<html>");
             writer.println("<head>");
             writer.println("<style>");
-            writer.println("/* Your CSS styles for the table can be placed here */");
             writer.println("</style>");
             writer.println("</head>");
             writer.println("<body>");
