@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Healthcare Application</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        function displayTable() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("tableContainer").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "patient_table.html", true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+<body>
+    <h1>Healthcare Data Entry</h1>
+    <form id="healthcareForm">
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" name="patientName"><br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age"><br><br>
+
+        <label for="symptoms">Symptoms:</label>
+        <input type="text" id="symptoms" name="symptoms"><br><br>
+
+        <button type="button" onclick="saveData(); displayTable();">Save Data and Display Table</button>
+    </form>
+    
+    <div id="tableContainer"></div>
+
+    <script>
+        function saveData() {
+            var patientName = document.getElementById("patientName").value;
+            var age = document.getElementById("age").value;
+            var symptoms = document.getElementById("symptoms").value;
+
+            var xmlString = `<patient>
+                                <name>${patientName}</name>
+                                <age>${age}</age>
+                                <symptoms>${symptoms}</symptoms>
+                             </patient>`;
+
+            var xmlBlob = new Blob([xmlString], { type: "application/xml" });
+            var xmlUrl = URL.createObjectURL(xmlBlob);
+
+            var a = document.createElement("a");
+            a.href = xmlUrl;
+            a.download = "patient_data.xml";
+            a.click();
+        }
+    </script>
+</body>
+</html>
