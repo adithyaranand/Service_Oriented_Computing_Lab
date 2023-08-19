@@ -46,7 +46,10 @@ public class ParseXML {
             writer.println("</style>");
             writer.println("</head>");
             writer.println("<body>");
+            writer.println("<center><h1><b>Output Table</b></h1></center>");
+            writer.println("<center>");
             writer.println(tableContent);
+            writer.println("</center>");
             writer.println("</body>");
             writer.println("</html>");
         } catch (IOException e) {
