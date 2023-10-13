@@ -16,8 +16,7 @@ public class WeatherServiceApplication {
 class WeatherController {
     @GetMapping("/weather/{location}")
     public String getWeather(@PathVariable String location) {
-        // Implement logic to retrieve weather data for the specified location
-        // For this example, we'll return a simple message.
+        
         return "The weather in " + location + " is sunny.";
     }
 }
